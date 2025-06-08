@@ -22,6 +22,10 @@ A computer vision and NLP pipeline that analyzes fashion videos to detect fashio
 - Pandas
 - HuggingFace models
 
+## Demo
+https://www.loom.com/share/36d6f1befca84d62be7003119b13adf2?sid=bba8222e-5d43-4a09-8653-6495ab349ae5
+
+
 ## 🚀 Quick Start
 
 1. **Clone the repository**
@@ -58,15 +62,7 @@ A computer vision and NLP pipeline that analyzes fashion videos to detect fashio
    python scripts/process_videos.py
    ```
 
-5. **Or start the FastAPI server**
-
-   ```
-   python api.py
-   ```
-
-   Then access the API documentation at <http://localhost:8000/docs>
-
-6. **Check results**
+5. **Check results**
 
    ```
    output/
@@ -125,7 +121,7 @@ The system saves annotated frames and individual detected fashion items:
 These images can be accessed:
 
 - Directly from the filesystem in the `detected_frames/{video_id}/` directory
-- Via the API at `/frames/{video_id}/{frame_file}` endpoint
+
 
 ## 🧠 Architecture
 
@@ -155,10 +151,6 @@ ai-reels/
 ├── utils/                 # Utility functions
 │   ├── text_cleaner.py
 │   └── video_processor.py
-├── api.py                 # FastAPI server implementation
-├── api_client_example.py  # Example client for the API
-├── api_simple.py          # Simplified API implementation
-├── temp/                  # Temporary directory for API uploads
 └── README.md              # This file
 ```
 
@@ -171,27 +163,6 @@ The main configuration parameters are defined at the top of `scripts/process_vid
 - Various file paths for input/output data
 
 ## 🔧 Advanced Usage
-
-### REST API
-
-The project includes a FastAPI-based REST API that allows you to:
-
-1. Upload videos for processing
-2. Check processing status
-3. Retrieve analysis results
-
-**API Endpoints:**
-
-- `POST /analyze-video`: Upload a video for analysis
-- `GET /status/{video_id}`: Check processing status
-- `GET /results/{video_id}`: Get analysis results
-
-**Example API client usage:**
-
-```python
-# Upload a video for analysis
-python api_client_example.py path/to/video.mp4 "Optional caption text"
-```
 
 ### Parallel Processing
 
