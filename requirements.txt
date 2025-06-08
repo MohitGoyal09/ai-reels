@@ -1,0 +1,33 @@
+# Core ML/DL and Data Handling
+pandas
+numpy
+torch
+torchvision
+torchaudio
+transformers[sentencepiece] # For Hugging Face models (BART, SentenceTransformer's CLIP)
+                           # sentencepiece is often needed for tokenizers
+sentence-transformers    # For CLIP embeddings
+                         # Also used in build_faiss_index
+matplotlib               # For color utilities and visualization
+
+# Object Detection
+ultralytics             # For YOLOv8 object detection
+
+# Computer Vision
+opencv-python-headless   # For video/image processing (headless is usually fine for servers/Colab)
+Pillow                   # PIL for image manipulation
+
+# Vector Search
+faiss-cpu                # For FAISS index (or faiss-gpu if you set that up)
+
+# NLP Utilities
+emoji                    # For cleaning emojis from text
+
+# API Framework (If you were to build an API - not used in the scripts directly, but good to list if planned)
+fastapi
+# uvicorn[standard]
+# python-multipart
+
+# Optional, but good for development/debugging if you used them:
+# jupyter # If you used Jupyter notebooks for experimentation
+# scikit-learn # Might be used for evaluation metrics if you went that far

@@ -1,0 +1,119 @@
+{
+    "video_id": "2025-05-31_14-01-37_UTC",
+    "vibes": [
+        "Clean Girl",
+        "Boho"
+    ],
+    "products": [
+        {
+            "type": "dress",
+            "matched_product_id": "42032",
+            "product_name": "Ria|Linen+ Maxi Dress With Criss-Cross Back",
+            "color": "grey",
+            "print_pattern": "Abstract",
+            "match_type": "similar",
+            "detection_confidence": 0.9936,
+            "matching_similarity": 0.8203,
+            "frame_number": 0
+        },
+        {
+            "type": "skirt",
+            "matched_product_id": "118454",
+            "product_name": "Nayra Skirt|TruTencel flared skirt with pockets",
+            "color": "grey",
+            "print_pattern": "Floral",
+            "match_type": "similar",
+            "detection_confidence": 0.5154,
+            "matching_similarity": 0.8349,
+            "frame_number": 0
+        },
+        {
+            "type": "top, t-shirt, sweatshirt",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "grey",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.5725,
+            "matching_similarity": 0.7601,
+            "frame_number": 0
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "17084",
+            "product_name": "Zinnia Top|Floral Knot-Detail Top",
+            "color": "beige, grey, black",
+            "print_pattern": "Floral",
+            "match_type": "similar",
+            "detection_confidence": 0.8411,
+            "matching_similarity": 0.8426,
+            "frame_number": 48
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "grey",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9738,
+            "matching_similarity": 0.8314,
+            "frame_number": 144
+        },
+        {
+            "type": "skirt",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.748,
+            "matching_similarity": 0.7584,
+            "frame_number": 144
+        },
+        {
+            "type": "sleeve",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "grey",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9942,
+            "matching_similarity": 0.7577,
+            "frame_number": 144
+        },
+        {
+            "type": "top, t-shirt, sweatshirt",
+            "matched_product_id": "17189",
+            "product_name": "N/A",
+            "color": "grey, black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.8922,
+            "matching_similarity": 0.7592,
+            "frame_number": 144
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "118459",
+            "product_name": "Elaria|Trutencel Volume Sleeve Midi Dress",
+            "color": "white",
+            "print_pattern": "Floral",
+            "match_type": "similar",
+            "detection_confidence": 0.9383,
+            "matching_similarity": 0.8515,
+            "frame_number": 192
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "14999",
+            "product_name": "Dream|Halter Neck Tiered Dress",
+            "color": "white, beige",
+            "print_pattern": "Solid",
+            "match_type": "similar",
+            "detection_confidence": 0.9982,
+            "matching_similarity": 0.8073,
+            "frame_number": 240
+        }
+    ]
+}

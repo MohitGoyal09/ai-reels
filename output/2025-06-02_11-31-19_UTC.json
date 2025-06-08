@@ -1,0 +1,42 @@
+{
+    "video_id": "2025-06-02_11-31-19_UTC",
+    "vibes": [
+        "Coquette",
+        "Boho"
+    ],
+    "products": [
+        {
+            "type": "neckline",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "brown, black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.6381,
+            "matching_similarity": 0.7549,
+            "frame_number": 120
+        },
+        {
+            "type": "skirt",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.8121,
+            "matching_similarity": 0.7793,
+            "frame_number": 1500
+        },
+        {
+            "type": "watch",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "pink, black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.6692,
+            "matching_similarity": 0.7514,
+            "frame_number": 1620
+        }
+    ]
+}

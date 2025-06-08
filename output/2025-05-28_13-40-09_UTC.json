@@ -1,0 +1,52 @@
+{
+    "video_id": "2025-05-28_13-40-09_UTC",
+    "vibes": [
+        "Boho"
+    ],
+    "products": [
+        {
+            "type": "dress",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black, grey",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9655,
+            "matching_similarity": 0.7893,
+            "frame_number": 120
+        },
+        {
+            "type": "neckline",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "grey, black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.8565,
+            "matching_similarity": 0.7504,
+            "frame_number": 120
+        },
+        {
+            "type": "neckline",
+            "matched_product_id": "17189",
+            "product_name": "N/A",
+            "color": "grey, black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9495,
+            "matching_similarity": 0.7927,
+            "frame_number": 240
+        },
+        {
+            "type": "sleeve",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.6288,
+            "matching_similarity": 0.754,
+            "frame_number": 300
+        }
+    ]
+}

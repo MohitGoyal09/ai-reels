@@ -1,0 +1,63 @@
+{
+    "video_id": "2025-05-28_13-42-32_UTC",
+    "vibes": [
+        "Y2K"
+    ],
+    "products": [
+        {
+            "type": "top, t-shirt, sweatshirt",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "pink, black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.5158,
+            "matching_similarity": 0.751,
+            "frame_number": 0
+        },
+        {
+            "type": "neckline",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "grey, brown",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9233,
+            "matching_similarity": 0.7748,
+            "frame_number": 120
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "17084",
+            "product_name": "Zinnia Top|Floral Knot-Detail Top",
+            "color": "grey",
+            "print_pattern": "Floral",
+            "match_type": "similar",
+            "detection_confidence": 0.8018,
+            "matching_similarity": 0.7783,
+            "frame_number": 180
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black, pink, grey",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9836,
+            "matching_similarity": 0.7901,
+            "frame_number": 240
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "17199",
+            "product_name": "N/A",
+            "color": "grey",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9924,
+            "matching_similarity": 0.8135,
+            "frame_number": 300
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+# This file ensures the data directory is tracked in Git
+# Place your data files in the following subdirectories:
+# - videos/             - Video files (.mp4, .mov, etc.)
+# - captions/           - Caption text files (.txt)
+# - metadata_json/      - Video metadata (.json)
+# - product_data.csv    - Product catalog data
+# - vibeslist.json      - List of fashion vibes 

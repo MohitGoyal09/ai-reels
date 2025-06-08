@@ -1,0 +1,54 @@
+{
+    "video_id": "2025-05-27_13-46-16_UTC",
+    "vibes": [
+        "Clean Girl",
+        "Y2K",
+        "Boho"
+    ],
+    "products": [
+        {
+            "type": "neckline",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.9249,
+            "matching_similarity": 0.7766,
+            "frame_number": 0
+        },
+        {
+            "type": "dress",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.5237,
+            "matching_similarity": 0.7808,
+            "frame_number": 0
+        },
+        {
+            "type": "skirt",
+            "matched_product_id": "42076",
+            "product_name": "Champa|Linen+ Eco-Printed Side Slit Tunic",
+            "color": "black",
+            "print_pattern": "Floral",
+            "match_type": "similar",
+            "detection_confidence": 0.578,
+            "matching_similarity": 0.7834,
+            "frame_number": 0
+        },
+        {
+            "type": "top, t-shirt, sweatshirt",
+            "matched_product_id": "17124",
+            "product_name": "N/A",
+            "color": "black",
+            "print_pattern": "N/A",
+            "match_type": "similar",
+            "detection_confidence": 0.5891,
+            "matching_similarity": 0.8088,
+            "frame_number": 0
+        }
+    ]
+}
