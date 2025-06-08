@@ -52,13 +52,21 @@ A computer vision and NLP pipeline that analyzes fashion videos to detect fashio
    └── product_ids.csv     # Mapping of FAISS indices to product IDs
    ```
 
-4. **Run the pipeline**
+4. **Run the pipeline directly**
 
    ```
    python scripts/process_videos.py
    ```
 
-5. **Check results**
+5. **Or start the FastAPI server**
+
+   ```
+   python api.py
+   ```
+
+   Then access the API documentation at <http://localhost:8000/docs>
+
+6. **Check results**
 
    ```
    output/
@@ -83,12 +91,41 @@ Each processed video generates a JSON file with the following structure:
       "match_type": "similar",
       "detection_confidence": 0.9231,
       "matching_similarity": 0.8765,
-      "frame_number": 120
+      "frame_number": 120,
+      "detection_image_path": "/path/to/detection/image.jpg",
+      "bounding_box": {
+        "x": 100,
+        "y": 150,
+        "width": 200,
+        "height": 300
+      }
     },
     // More products...
+  ],
+  "frames_dir": "/path/to/detected_frames/video_id",
+  "frame_count": 10,
+  "frames": [
+    {
+      "frame_number": 120,
+      "annotated_frame_path": "/path/to/annotated/frame.jpg",
+      "detection_count": 3
+    },
+    // More frames...
   ]
 }
 ```
+
+## 📸 Detected Frames
+
+The system saves annotated frames and individual detected fashion items:
+
+1. **Annotated Frames**: Each frame with detected objects is saved with bounding boxes and labels.
+2. **Individual Detections**: Each detected fashion item is cropped and saved separately.
+
+These images can be accessed:
+
+- Directly from the filesystem in the `detected_frames/{video_id}/` directory
+- Via the API at `/frames/{video_id}/{frame_file}` endpoint
 
 ## 🧠 Architecture
 
@@ -111,11 +148,17 @@ ai-reels/
 │   ├── vibe_classifier_hf_zeroshot.py
 │   └── precomputed/       # Pre-computed model files
 ├── output/                # Output JSON files
+├── detected_frames/       # Saved frames with detections
+│   └── [video_id]/        # Subdirectories for each video
 ├── scripts/               # Main scripts
 │   └── process_videos.py  # Main pipeline script
 ├── utils/                 # Utility functions
 │   ├── text_cleaner.py
 │   └── video_processor.py
+├── api.py                 # FastAPI server implementation
+├── api_client_example.py  # Example client for the API
+├── api_simple.py          # Simplified API implementation
+├── temp/                  # Temporary directory for API uploads
 └── README.md              # This file
 ```
 
@@ -128,6 +171,27 @@ The main configuration parameters are defined at the top of `scripts/process_vid
 - Various file paths for input/output data
 
 ## 🔧 Advanced Usage
+
+### REST API
+
+The project includes a FastAPI-based REST API that allows you to:
+
+1. Upload videos for processing
+2. Check processing status
+3. Retrieve analysis results
+
+**API Endpoints:**
+
+- `POST /analyze-video`: Upload a video for analysis
+- `GET /status/{video_id}`: Check processing status
+- `GET /results/{video_id}`: Get analysis results
+
+**Example API client usage:**
+
+```python
+# Upload a video for analysis
+python api_client_example.py path/to/video.mp4 "Optional caption text"
+```
 
 ### Parallel Processing
 
@@ -156,4 +220,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-

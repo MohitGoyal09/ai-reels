@@ -14,7 +14,14 @@
             "match_type": "similar",
             "detection_confidence": 0.9936,
             "matching_similarity": 0.8203,
-            "frame_number": 0
+            "frame_number": 0,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_0_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 233,
+                "y": 419,
+                "width": 395,
+                "height": 860
+            }
         },
         {
             "type": "skirt",
@@ -25,7 +32,14 @@
             "match_type": "similar",
             "detection_confidence": 0.5154,
             "matching_similarity": 0.8349,
-            "frame_number": 0
+            "frame_number": 0,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_0_det_-1012191898137787796.jpg",
+            "bounding_box": {
+                "x": 235,
+                "y": 674,
+                "width": 380,
+                "height": 604
+            }
         },
         {
             "type": "top, t-shirt, sweatshirt",
@@ -36,7 +50,14 @@
             "match_type": "similar",
             "detection_confidence": 0.5725,
             "matching_similarity": 0.7601,
-            "frame_number": 0
+            "frame_number": 0,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_0_det_-4830274159898683171.jpg",
+            "bounding_box": {
+                "x": 290,
+                "y": 412,
+                "width": 244,
+                "height": 284
+            }
         },
         {
             "type": "dress",
@@ -47,7 +68,14 @@
             "match_type": "similar",
             "detection_confidence": 0.8411,
             "matching_similarity": 0.8426,
-            "frame_number": 48
+            "frame_number": 48,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_48_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 0,
+                "y": 604,
+                "width": 718,
+                "height": 676
+            }
         },
         {
             "type": "dress",
@@ -58,7 +86,14 @@
             "match_type": "similar",
             "detection_confidence": 0.9738,
             "matching_similarity": 0.8314,
-            "frame_number": 144
+            "frame_number": 144,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_144_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 9,
+                "y": 415,
+                "width": 670,
+                "height": 865
+            }
         },
         {
             "type": "skirt",
@@ -69,7 +104,14 @@
             "match_type": "similar",
             "detection_confidence": 0.748,
             "matching_similarity": 0.7584,
-            "frame_number": 144
+            "frame_number": 144,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_144_det_3858993065439165672.jpg",
+            "bounding_box": {
+                "x": 109,
+                "y": 887,
+                "width": 508,
+                "height": 387
+            }
         },
         {
             "type": "sleeve",
@@ -80,7 +122,14 @@
             "match_type": "similar",
             "detection_confidence": 0.9942,
             "matching_similarity": 0.7577,
-            "frame_number": 144
+            "frame_number": 144,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_144_det_-2750793145433312576.jpg",
+            "bounding_box": {
+                "x": 17,
+                "y": 421,
+                "width": 211,
+                "height": 220
+            }
         },
         {
             "type": "top, t-shirt, sweatshirt",
@@ -91,7 +140,14 @@
             "match_type": "similar",
             "detection_confidence": 0.8922,
             "matching_similarity": 0.7592,
-            "frame_number": 144
+            "frame_number": 144,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_144_det_-6800701331293619857.jpg",
+            "bounding_box": {
+                "x": 14,
+                "y": 416,
+                "width": 666,
+                "height": 396
+            }
         },
         {
             "type": "dress",
@@ -102,7 +158,14 @@
             "match_type": "similar",
             "detection_confidence": 0.9383,
             "matching_similarity": 0.8515,
-            "frame_number": 192
+            "frame_number": 192,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_192_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 16,
+                "y": 316,
+                "width": 589,
+                "height": 964
+            }
         },
         {
             "type": "dress",
@@ -113,7 +176,48 @@
             "match_type": "similar",
             "detection_confidence": 0.9982,
             "matching_similarity": 0.8073,
-            "frame_number": 240
+            "frame_number": 240,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_240_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 242,
+                "y": 454,
+                "width": 353,
+                "height": 826
+            }
+        }
+    ],
+    "frames_dir": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC",
+    "frame_count": 6,
+    "frames": [
+        {
+            "frame_number": 0,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_0.jpg",
+            "detection_count": 5
+        },
+        {
+            "frame_number": 48,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_48.jpg",
+            "detection_count": 9
+        },
+        {
+            "frame_number": 96,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_96.jpg",
+            "detection_count": 13
+        },
+        {
+            "frame_number": 144,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_144.jpg",
+            "detection_count": 7
+        },
+        {
+            "frame_number": 192,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_192.jpg",
+            "detection_count": 4
+        },
+        {
+            "frame_number": 240,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-31_14-01-37_UTC\\2025-05-31_14-01-37_UTC_frame_240.jpg",
+            "detection_count": 5
         }
     ]
 }

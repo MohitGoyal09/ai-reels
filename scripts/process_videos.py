@@ -1,7 +1,7 @@
 import os
 import glob
 import json
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import pandas as pd
 import tempfile
 from pathlib import Path
@@ -40,6 +40,7 @@ FAISS_INDEX_PATH = PRECOMPUTED_MODELS_DIR / 'catalog.index'
 PRODUCT_IDS_MAP_PATH = PRECOMPUTED_MODELS_DIR / 'product_ids.csv'
 
 OUTPUT_JSON_DIR = BASE_DIR / 'output'
+DETECTED_FRAMES_DIR = BASE_DIR / 'detected_frames'  # New directory for detected frames
 
 # --- Model Configuration ---
 ZS_VIBE_MODEL_NAME = "facebook/bart-large-mnli"
@@ -128,6 +129,50 @@ def create_product_output(yolos_class_name, yolos_confidence, match_info, origin
         "frame_number": original_frame_num
     }
 
+def save_annotated_frame(frame_path, detections, video_id, frame_num, output_dir):
+    """Save a frame with detection bounding boxes and labels"""
+    try:
+        # Load the image
+        img = Image.open(frame_path).convert("RGB")
+        draw = ImageDraw.Draw(img)
+        
+        # Try to load a font, use default if not available
+        try:
+            font = ImageFont.truetype("arial.ttf", 14)
+        except IOError:
+            font = ImageFont.load_default()
+        
+        # Draw bounding boxes and labels for each detection
+        for det in detections:
+            class_name = det['class_name']
+            bbox = det['bounding_box']
+            conf = det['confidence_score']
+            
+            # Extract bounding box coordinates
+            x, y, w, h = bbox
+            
+            # Colors based on category type
+            color = "green" if class_name in MAIN_FASHION_CATEGORIES else "blue"
+            
+            # Draw rectangle
+            draw.rectangle([x, y, x+w, y+h], outline=color, width=2)
+            
+            # Draw label with confidence
+            label = f"{class_name}: {conf:.2f}"
+            text_bbox = draw.textbbox((x, y-15), label, font=font)
+            draw.rectangle(text_bbox, fill=color)
+            draw.text((x, y-15), label, fill="white", font=font)
+        
+        # Save the annotated image
+        os.makedirs(output_dir, exist_ok=True)
+        output_path = os.path.join(output_dir, f"{video_id}_frame_{frame_num}.jpg")
+        img.save(output_path)
+        
+        return output_path
+    except Exception as e:
+        print(f"Error saving annotated frame: {e}")
+        return None
+
 # --- Main Video Processing Function ---
 def process_single_video(
     video_path: Path, 
@@ -144,6 +189,10 @@ def process_single_video(
     video_id = video_path.stem
     start_time_video = time.time()
     print(f"\n▶️ Starting processing for Video ID: {video_id}")
+
+    # Create a directory for this video's detected frames
+    video_frames_dir = DETECTED_FRAMES_DIR / video_id
+    os.makedirs(video_frames_dir, exist_ok=True)
 
     # 1. Prepare Text for Vibe Classification
     raw_caption_from_txt = ""
@@ -191,6 +240,7 @@ def process_single_video(
     # 3. Frame Extraction, Object Detection, Product Matching
     processed_products_for_video = []
     unique_matched_products_tracker = set() # (yolos_class_name, matched_prod_id)
+    frame_detections = {} # Store all detections for each frame
 
     with tempfile.TemporaryDirectory(prefix=f"flickd_frames_{video_id}_") as temp_frames_dir:
         print(f"  🖼️ Extracting frames to: {temp_frames_dir}...")
@@ -223,6 +273,22 @@ def process_single_video(
                 )
                 
                 if not yolos_detections: continue
+
+                # Save the frame with detection bounding boxes
+                annotated_frame_path = save_annotated_frame(
+                    frame_path_str, 
+                    yolos_detections,
+                    video_id, 
+                    original_frame_num,
+                    video_frames_dir
+                )
+                
+                # Store all detections for this frame
+                frame_detections[original_frame_num] = {
+                    "frame_path": frame_path_str,
+                    "annotated_frame_path": annotated_frame_path,
+                    "detections": yolos_detections
+                }
 
                 try:
                     full_frame_image_pil = Image.open(frame_path_str).convert("RGB")
@@ -265,6 +331,17 @@ def process_single_video(
                         continue
                         
                     cropped_item_pil = full_frame_image_pil.crop((x_tl_safe, y_tl_safe, x_br, y_br))
+                    
+                    # Save the cropped detection
+                    detection_output_path = os.path.join(
+                        video_frames_dir, 
+                        f"{video_id}_frame_{original_frame_num}_det_{hash(str(frame_products[original_frame_num]))}.jpg"
+                    )
+                    cropped_item_pil.save(detection_output_path)
+                    
+                    # Add detection path to the detection info
+                    det['detection_image_path'] = detection_output_path
+                    
                     match_info = product_matcher_instance.match_detected_item(cropped_item_pil)
                     
                     # Only process matches above threshold
@@ -281,6 +358,17 @@ def process_single_video(
                             yolos_class_name, yolos_confidence, match_info, 
                             original_frame_num, product_meta_df
                         )
+                        
+                        # Add detection image path
+                        output_product['detection_image_path'] = detection_output_path
+                        
+                        # Add bounding box information
+                        output_product['bounding_box'] = {
+                            'x': x_tl_safe,
+                            'y': y_tl_safe,
+                            'width': x_br - x_tl_safe,
+                            'height': y_br - y_tl_safe
+                        }
                         
                         # Add to frame products
                         frame_products[original_frame_num].append(output_product)
@@ -305,6 +393,22 @@ def process_single_video(
                     
                     if not yolos_detections: continue
                     
+                    # Save the frame with detection bounding boxes (lower threshold pass)
+                    annotated_frame_path = save_annotated_frame(
+                        frame_path_str, 
+                        yolos_detections,
+                        video_id, 
+                        original_frame_num,
+                        video_frames_dir
+                    )
+                    
+                    # Store all detections for this frame
+                    frame_detections[original_frame_num] = {
+                        "frame_path": frame_path_str,
+                        "annotated_frame_path": annotated_frame_path,
+                        "detections": yolos_detections
+                    }
+                    
                     full_frame_image_pil = Image.open(frame_path_str).convert("RGB")
                     
                     for det in yolos_detections:
@@ -324,6 +428,17 @@ def process_single_video(
                         
                         if w > 0 and h > 0 and x_tl_safe < x_br and y_tl_safe < y_br:
                             cropped_item_pil = full_frame_image_pil.crop((x_tl_safe, y_tl_safe, x_br, y_br))
+                            
+                            # Save the cropped detection (second pass)
+                            detection_output_path = os.path.join(
+                                video_frames_dir, 
+                                f"{video_id}_frame_{original_frame_num}_det_2nd_{len(processed_products_for_video)}.jpg"
+                            )
+                            cropped_item_pil.save(detection_output_path)
+                            
+                            # Add detection path to the detection info
+                            det['detection_image_path'] = detection_output_path
+                            
                             match_info = product_matcher_instance.match_detected_item(cropped_item_pil)
                             
                             if match_info['match_type'] != 'no_match':
@@ -339,16 +454,38 @@ def process_single_video(
                                     original_frame_num, product_meta_df
                                 )
                                 
+                                # Add detection image path
+                                output_product['detection_image_path'] = detection_output_path
+                                
+                                # Add bounding box information
+                                output_product['bounding_box'] = {
+                                    'x': x_tl_safe,
+                                    'y': y_tl_safe,
+                                    'width': x_br - x_tl_safe,
+                                    'height': y_br - y_tl_safe
+                                }
+                                
                                 processed_products_for_video.append(output_product)
     
     # 4. Assemble final JSON
     final_video_output = {
         "video_id": video_id,
         "vibes": detected_vibes,
-        "products": processed_products_for_video
+        "products": processed_products_for_video,
+        "frames_dir": str(video_frames_dir),
+        "frame_count": len(frame_detections),
+        "frames": [
+            {
+                "frame_number": frame_num,
+                "annotated_frame_path": info["annotated_frame_path"],
+                "detection_count": len(info["detections"])
+            }
+            for frame_num, info in frame_detections.items()
+        ]
     }
     elapsed_time_video = time.time() - start_time_video
     print(f"  ✅ Finished processing '{video_id}'. Duration: {elapsed_time_video:.2f}s. Found {len(detected_vibes)} vibes, {len(processed_products_for_video)} product matches.")
+    print(f"  💾 Saved {len(frame_detections)} annotated frames to {video_frames_dir}")
     return final_video_output
 
 # --- Main Execution Block ---
@@ -356,8 +493,10 @@ if __name__ == '__main__':
     overall_start_time = time.time()
     print("🚀 Flickd AI Full Pipeline - Initializing...")
 
-    # Create output directory if it doesn't exist
+    # Create output directories if they don't exist
     os.makedirs(OUTPUT_JSON_DIR, exist_ok=True)
+    os.makedirs(DETECTED_FRAMES_DIR, exist_ok=True)
+    
     # Basic checks for essential input files/dirs
     essential_paths = [INPUT_VIDEO_DIR, CAPTIONS_DIR, METADATA_JSON_DIR, 
                        PRODUCT_METADATA_CSV_PATH, VIBE_TAXONOMY_JSON_PATH, 
@@ -370,9 +509,9 @@ if __name__ == '__main__':
     # 1. Initialize All Models & Load Metadata (ONCE)
     print("\n[1/3] Initializing models and loading metadata...")
     try:
-        detector = FashionDetectorAuto() # Uses YOLOS valentinafeve/yolos-fashionpedia
+        detector = FashionDetectorAuto()
         matcher = ProductMatcher(index_path=str(FAISS_INDEX_PATH), product_id_map_path=str(PRODUCT_IDS_MAP_PATH))
-        vibe_clf = VibeClassifierHFZeroShot( # New name to match the call
+        vibe_clf = VibeClassifierHFZeroShot(
             vibe_taxonomy_json_path=str(VIBE_TAXONOMY_JSON_PATH), 
             model_name=ZS_VIBE_MODEL_NAME
         )
@@ -383,7 +522,7 @@ if __name__ == '__main__':
             print("  Product metadata loaded and indexed by 'id'.")
         else:
             print("  WARNING: 'id' column missing in product_data.csv. Metadata enrichment will be limited.")
-            product_metadata_df = None # Or handle as fatal error if critical
+            product_metadata_df = None
             
     except Exception as e_init:
         print(f"FATAL ERROR during model/metadata initialization: {e_init}")
@@ -393,7 +532,7 @@ if __name__ == '__main__':
 
     # 2. Find and Process Video Files
     print("\n[2/3] Finding video files to process...")
-    video_extensions = ["*.mp4", "*.mov", "*.avi", "*.mkv"] # Add more if needed
+    video_extensions = ["*.mp4", "*.mov", "*.avi", "*.mkv"]
     all_video_file_paths = []
     for ext in video_extensions:
         all_video_file_paths.extend(list(INPUT_VIDEO_DIR.glob(ext)))

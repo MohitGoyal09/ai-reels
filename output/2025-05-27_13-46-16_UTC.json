@@ -15,7 +15,14 @@
             "match_type": "similar",
             "detection_confidence": 0.9249,
             "matching_similarity": 0.7766,
-            "frame_number": 0
+            "frame_number": 0,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_0_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 301,
+                "y": 321,
+                "width": 148,
+                "height": 116
+            }
         },
         {
             "type": "dress",
@@ -26,7 +33,14 @@
             "match_type": "similar",
             "detection_confidence": 0.5237,
             "matching_similarity": 0.7808,
-            "frame_number": 0
+            "frame_number": 0,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_0_det_7050813359952272546.jpg",
+            "bounding_box": {
+                "x": 0,
+                "y": 325,
+                "width": 679,
+                "height": 920
+            }
         },
         {
             "type": "skirt",
@@ -37,7 +51,14 @@
             "match_type": "similar",
             "detection_confidence": 0.578,
             "matching_similarity": 0.7834,
-            "frame_number": 0
+            "frame_number": 0,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_0_det_-6850245117696815206.jpg",
+            "bounding_box": {
+                "x": 0,
+                "y": 732,
+                "width": 679,
+                "height": 543
+            }
         },
         {
             "type": "top, t-shirt, sweatshirt",
@@ -48,7 +69,48 @@
             "match_type": "similar",
             "detection_confidence": 0.5891,
             "matching_similarity": 0.8088,
-            "frame_number": 0
+            "frame_number": 0,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_0_det_1054213516866794733.jpg",
+            "bounding_box": {
+                "x": 236,
+                "y": 314,
+                "width": 392,
+                "height": 585
+            }
+        }
+    ],
+    "frames_dir": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC",
+    "frame_count": 6,
+    "frames": [
+        {
+            "frame_number": 0,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_0.jpg",
+            "detection_count": 5
+        },
+        {
+            "frame_number": 60,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_60.jpg",
+            "detection_count": 1
+        },
+        {
+            "frame_number": 120,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_120.jpg",
+            "detection_count": 1
+        },
+        {
+            "frame_number": 180,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_180.jpg",
+            "detection_count": 2
+        },
+        {
+            "frame_number": 240,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_240.jpg",
+            "detection_count": 8
+        },
+        {
+            "frame_number": 300,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-27_13-46-16_UTC\\2025-05-27_13-46-16_UTC_frame_300.jpg",
+            "detection_count": 1
         }
     ]
 }

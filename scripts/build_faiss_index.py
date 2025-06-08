@@ -34,7 +34,7 @@ catalog_df_raw.dropna(subset=['image_url'], inplace=True)
 unique_products_df = catalog_df_raw.drop_duplicates(subset=['id'], keep='first')
 
 image_urls = unique_products_df['image_url'].tolist()
-product_ids_list = unique_products_df['id'].tolist() # These are your actual Product IDs
+product_ids_list = unique_products_df['id'].tolist() 
 
 if not image_urls:
     print("Error: No image URLs found after processing the catalog. Please check your CSV.")
@@ -45,8 +45,7 @@ os.makedirs('models/precomputed', exist_ok=True)
 
 print(f"Step 3: Generating embeddings for {len(image_urls)} unique catalog images...")
 catalog_embeddings = []
-processed_product_ids = [] # Keep track of IDs for which embeddings were successfully generated
-
+processed_product_ids = []
 for product_id, url in zip(product_ids_list, image_urls):
     try:
         response = requests.get(url, timeout=15)

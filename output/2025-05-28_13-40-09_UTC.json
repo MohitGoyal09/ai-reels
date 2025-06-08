@@ -13,7 +13,14 @@
             "match_type": "similar",
             "detection_confidence": 0.9655,
             "matching_similarity": 0.7893,
-            "frame_number": 120
+            "frame_number": 120,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_120_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 290,
+                "y": 558,
+                "width": 189,
+                "height": 500
+            }
         },
         {
             "type": "neckline",
@@ -24,7 +31,14 @@
             "match_type": "similar",
             "detection_confidence": 0.8565,
             "matching_similarity": 0.7504,
-            "frame_number": 120
+            "frame_number": 120,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_120_det_-3250955854290302721.jpg",
+            "bounding_box": {
+                "x": 358,
+                "y": 564,
+                "width": 75,
+                "height": 90
+            }
         },
         {
             "type": "neckline",
@@ -35,7 +49,14 @@
             "match_type": "similar",
             "detection_confidence": 0.9495,
             "matching_similarity": 0.7927,
-            "frame_number": 240
+            "frame_number": 240,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_240_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 313,
+                "y": 583,
+                "width": 176,
+                "height": 173
+            }
         },
         {
             "type": "sleeve",
@@ -46,7 +67,68 @@
             "match_type": "similar",
             "detection_confidence": 0.6288,
             "matching_similarity": 0.754,
-            "frame_number": 300
+            "frame_number": 300,
+            "detection_image_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_300_det_-6117907993874331227.jpg",
+            "bounding_box": {
+                "x": 477,
+                "y": 600,
+                "width": 50,
+                "height": 171
+            }
+        }
+    ],
+    "frames_dir": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC",
+    "frame_count": 10,
+    "frames": [
+        {
+            "frame_number": 0,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_0.jpg",
+            "detection_count": 2
+        },
+        {
+            "frame_number": 60,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_60.jpg",
+            "detection_count": 3
+        },
+        {
+            "frame_number": 120,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_120.jpg",
+            "detection_count": 5
+        },
+        {
+            "frame_number": 180,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_180.jpg",
+            "detection_count": 4
+        },
+        {
+            "frame_number": 240,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_240.jpg",
+            "detection_count": 8
+        },
+        {
+            "frame_number": 300,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_300.jpg",
+            "detection_count": 6
+        },
+        {
+            "frame_number": 360,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_360.jpg",
+            "detection_count": 13
+        },
+        {
+            "frame_number": 420,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_420.jpg",
+            "detection_count": 9
+        },
+        {
+            "frame_number": 480,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_480.jpg",
+            "detection_count": 11
+        },
+        {
+            "frame_number": 540,
+            "annotated_frame_path": "D:\\code\\ai-reels\\detected_frames\\2025-05-28_13-40-09_UTC\\2025-05-28_13-40-09_UTC_frame_540.jpg",
+            "detection_count": 9
         }
     ]
 }
