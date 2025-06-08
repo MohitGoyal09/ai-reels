@@ -8,14 +8,12 @@ from pathlib import Path
 import time
 import re
 
-# --- Add project root to sys.path if running locally from scripts/ ---
 import sys
 SCRIPT_DIR_PATH = Path(__file__).resolve().parent
 PROJECT_ROOT_PATH = SCRIPT_DIR_PATH.parent
 if str(PROJECT_ROOT_PATH) not in sys.path:
     sys.path.append(str(PROJECT_ROOT_PATH))
 
-# --- Import custom modules ---
 try:
     from utils.video_processor import extract_frames
     from utils.text_cleaner import clean_text_for_nlp

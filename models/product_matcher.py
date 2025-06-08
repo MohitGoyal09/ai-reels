@@ -1,9 +1,9 @@
 import faiss
 import numpy as np
 import pandas as pd
-from PIL import Image # For handling cropped images
-from sentence_transformers import SentenceTransformer # To load CLIP model for query embeddings
-import os # For os.path.exists
+from PIL import Image 
+from sentence_transformers import SentenceTransformer 
+import os 
 import torch
 from torchvision import transforms
 import matplotlib.colors as mcolors
@@ -155,22 +155,17 @@ class ProductMatcher:
             detected_colors = self.extract_dominant_colors(cropped_pil_image)
             
             # 1. Generate embedding for the cropped query image
-            # Convert PIL image to RGB if it has an alpha channel, as CLIP expects 3 channels.
-            query_embedding = self.clip_model.encode([cropped_pil_image.convert("RGB")]) # Result is a numpy array (1, embedding_dim)
+            query_embedding = self.clip_model.encode([cropped_pil_image.convert("RGB")]) 
 
             # Normalize the query embedding (L2 normalization)
             # This is crucial for cosine similarity when using IndexFlatIP.
             faiss.normalize_L2(query_embedding)
 
             # 2. Search FAISS index
-            # D = distances (or dot products for IndexFlatIP after normalization), I = indices
-            # We search for k_matches, but current logic only processes the top one for 'match_type'.
             similarity_scores_faiss, faiss_indices = self.index.search(query_embedding.astype(np.float32), k=k_matches)
 
             # Process the top match (index 0)
             best_match_faiss_index = faiss_indices[0][0]
-            # For IndexFlatIP with normalized vectors, the "distance" D is actually the dot product (cosine similarity).
-            # No need to convert D if it's already similarity. If it were L2 distance, you'd convert.
             similarity_to_best_match = float(similarity_scores_faiss[0][0])
 
             # 3. Retrieve Product ID using the FAISS index
@@ -190,7 +185,7 @@ class ProductMatcher:
             if match_type != 'no_match':
                 final_matched_product_id = matched_product_id_value
 
-            # For now, we return info for the single best match
+            
             return {
                 'match_type': match_type,
                 'matched_product_id': final_matched_product_id,
@@ -199,12 +194,10 @@ class ProductMatcher:
             }
 
         except IndexError:
-            # This can happen if faiss_indices is empty or smaller than expected,
-            # though with k=1 and a non-empty index, it's less likely for the top match.
+           
             print(f"Error: Index out of bounds during FAISS result processing. FAISS indices: {faiss_indices}")
             return {'match_type': 'no_match', 'matched_product_id': None, 'similarity_score': 0.0, 'detected_colors': []}
         except Exception as e:
             print(f"Error during product matching: {e}")
-            # import traceback
-            # traceback.print_exc() # For detailed debugging
+            
             return {'match_type': 'no_match', 'matched_product_id': None, 'similarity_score': 0.0, 'detected_colors': []}

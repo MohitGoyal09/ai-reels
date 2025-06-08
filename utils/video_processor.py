@@ -1,7 +1,7 @@
 import cv2
 import os
-import glob # For finding all video files
-from pathlib import Path # For easy path manipulation and getting filename stems
+import glob
+from pathlib import Path 
 import numpy as np
 
 def extract_frames(video_path, base_output_dir, fps=1, use_keyframes=True, max_frames=30):

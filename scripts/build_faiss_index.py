@@ -1,4 +1,4 @@
-# In scripts/build_faiss_index.py
+
 import pandas as pd
 import numpy as np
 import faiss
@@ -20,9 +20,9 @@ except Exception as e:
     print("Ensure you saved your 'images.xlsx' as 'product_catalog.csv' in the 'data' folder.")
     exit()
 
-# --- IMPORTANT: Handle duplicate Product IDs and select one image per ID ---
+
 print("Step 2a: Processing product catalog to get unique products (first image per ID)")
-# Using 'id' as the Product ID column and 'image_url' as the image URL column
+
 if 'id' not in catalog_df_raw.columns or 'image_url' not in catalog_df_raw.columns:
     print("Error: CSV must contain 'id' and 'image_url' columns.")
     print(f"Columns found: {catalog_df_raw.columns.tolist()}")
@@ -49,18 +49,16 @@ processed_product_ids = []
 for product_id, url in zip(product_ids_list, image_urls):
     try:
         response = requests.get(url, timeout=15)
-        response.raise_for_status() # Will raise an error for bad status codes
+        response.raise_for_status()
         img = Image.open(BytesIO(response.content)).convert("RGB")
         embedding = model.encode([img])[0]
         catalog_embeddings.append(embedding)
-        processed_product_ids.append(product_id) # Add ID if successful
+        processed_product_ids.append(product_id)
     except requests.exceptions.RequestException as e:
         print(f"Warning: Request failed for Product ID {product_id}, URL {url}. Error: {e}. Skipping.")
     except Exception as e:
         print(f"Warning: Could not process image for Product ID {product_id}, URL {url}. Error: {e}. Skipping.")
-        # Optionally, add a zero vector for skipped items to maintain index alignment,
-        # but then you'd need to handle it during matching.
-        # For simplicity, we're skipping and will only save IDs for processed items.
+       
 
 if not catalog_embeddings:
     print("Error: No embeddings were generated. Halting.")
@@ -70,14 +68,13 @@ catalog_embeddings_np = np.array(catalog_embeddings).astype('float32')
 
 print("Step 4: Building and saving FAISS index...")
 embedding_dimension = catalog_embeddings_np.shape[1]
-faiss.normalize_L2(catalog_embeddings_np) # Normalize for cosine similarity
-index = faiss.IndexFlatIP(embedding_dimension) # Using Inner Product for similarity
+faiss.normalize_L2(catalog_embeddings_np) 
+index = faiss.IndexFlatIP(embedding_dimension)
 index.add(catalog_embeddings_np)
 
 faiss.write_index(index, 'models/precomputed/catalog.index')
 
-# Save the product IDs that correspond to the embeddings in the FAISS index
-# This is CRUCIAL for mapping FAISS results back to actual Product IDs
+
 pd.DataFrame({'Product ID': processed_product_ids}).to_csv('models/precomputed/product_ids.csv', index=False)
 
 print(f"Preprocessing complete! Your product search index is ready with {len(processed_product_ids)} items.")
